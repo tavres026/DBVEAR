@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Acervo - Biblioteca</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container">
+
+            <h1>📚 Biblioteca Digital</h1>
+
+            <nav>
+
+                <a href="{{ url_for('inicio') }}">
+                    Início
+                </a>
+
+                <a href="{{ url_for('cadastro') }}">
+                    Cadastrar Livro
+                </a>
+
+                <a href="{{ url_for('acervo') }}">
+                    Consultar Acervo
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="titulo-acervo">
+
+            <h2>Acervo da Biblioteca</h2>
+
+            <a
+                class="botao"
+                href="{{ url_for('cadastro') }}"
+            >
+                + Cadastrar Livro
+            </a>
+
+        </div>
+
+
+        {% if livros %}
+
+        <div class="tabela-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Título</th>
+
+                        <th>Autor</th>
+
+                        <th>Categoria</th>
+
+                        <th>ISBN</th>
+
+                        <th>Ano</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for livro in livros %}
+
+                    <tr>
+
+                        <td>
+                            {{ livro.id }}
+                        </td>
+
+                        <td>
+                            {{ livro.titulo }}
+                        </td>
+
+                        <td>
+                            {{ livro.autor }}
+                        </td>
+
+                        <td>
+                            {{ livro.categoria }}
+                        </td>
+
+                        <td>
+                            {{ livro.isbn or "-" }}
+                        </td>
+
+                        <td>
+                            {{ livro.ano or "-" }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="vazio">
+
+            <h3>Acervo vazio</h3>
+
+            <p>
+                Ainda não existem livros cadastrados.
+            </p>
+
+            <a
+                class="botao"
+                href="{{ url_for('cadastro') }}"
+            >
+                Cadastrar primeiro livro
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Sistema de Gerenciamento de Biblioteca
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

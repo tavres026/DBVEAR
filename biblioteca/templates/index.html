@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Biblioteca - Início</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container">
+
+            <h1>📚 Biblioteca Digital</h1>
+
+            <nav>
+                <a href="{{ url_for('inicio') }}">Início</a>
+
+                <a href="{{ url_for('cadastro') }}">
+                    Cadastrar Livro
+                </a>
+
+                <a href="{{ url_for('acervo') }}">
+                    Consultar Acervo
+                </a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="principal">
+
+            <h2>Bem-vindo à Biblioteca</h2>
+
+            <p>
+                Sistema de gerenciamento e consulta de livros.
+            </p>
+
+            <div class="botoes">
+
+                <a class="botao"
+                   href="{{ url_for('cadastro') }}">
+                    Cadastrar Livro
+                </a>
+
+                <a class="botao"
+                   href="{{ url_for('acervo') }}">
+                    Consultar Acervo
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="estatisticas">
+
+            <div class="card">
+
+                <h3>{{ quantidade_livros }}</h3>
+
+                <p>Livros cadastrados</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>{{ quantidade_autores }}</h3>
+
+                <p>Autores</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>{{ quantidade_categorias }}</h3>
+
+                <p>Categorias</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Sistema de Gerenciamento de Biblioteca
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
